@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		354263C41E90F045007789AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354263C31E90F045007789AE /* AppDelegate.swift */; };
 		354263C61E90F045007789AE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354263C51E90F045007789AE /* ViewController.swift */; };
-		354263C91E90F045007789AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 354263C71E90F045007789AE /* Main.storyboard */; };
 		354263CB1E90F045007789AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 354263CA1E90F045007789AE /* Assets.xcassets */; };
 		354263CE1E90F045007789AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 354263CC1E90F045007789AE /* LaunchScreen.storyboard */; };
 		354263D91E90F046007789AE /* facebookfeedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354263D81E90F046007789AE /* facebookfeedTests.swift */; };
@@ -37,7 +36,6 @@
 		354263C01E90F045007789AE /* facebookfeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = facebookfeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		354263C31E90F045007789AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		354263C51E90F045007789AE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		354263C81E90F045007789AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		354263CA1E90F045007789AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		354263CD1E90F045007789AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		354263CF1E90F045007789AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -99,7 +97,6 @@
 			children = (
 				354263C31E90F045007789AE /* AppDelegate.swift */,
 				354263C51E90F045007789AE /* ViewController.swift */,
-				354263C71E90F045007789AE /* Main.storyboard */,
 				354263CA1E90F045007789AE /* Assets.xcassets */,
 				354263CC1E90F045007789AE /* LaunchScreen.storyboard */,
 				354263CF1E90F045007789AE /* Info.plist */,
@@ -193,6 +190,7 @@
 				TargetAttributes = {
 					354263BF1E90F045007789AE = {
 						CreatedOnToolsVersion = 8.3;
+						DevelopmentTeam = TB92Z93P7Z;
 						ProvisioningStyle = Automatic;
 					};
 					354263D31E90F046007789AE = {
@@ -234,7 +232,6 @@
 			files = (
 				354263CE1E90F045007789AE /* LaunchScreen.storyboard in Resources */,
 				354263CB1E90F045007789AE /* Assets.xcassets in Resources */,
-				354263C91E90F045007789AE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,14 +293,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		354263C71E90F045007789AE /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				354263C81E90F045007789AE /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		354263CC1E90F045007789AE /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -414,6 +403,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = TB92Z93P7Z;
 				INFOPLIST_FILE = facebookfeed/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = hjt.facebookfeed;
@@ -426,6 +416,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = TB92Z93P7Z;
 				INFOPLIST_FILE = facebookfeed/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = hjt.facebookfeed;
