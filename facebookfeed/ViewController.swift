@@ -33,7 +33,13 @@ class FeedController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: 300)
+        return CGSize(width: view.frame.width, height: 400)
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        
+        collectionView?.collectionViewLayout.invalidateLayout()
     }
 
 }
@@ -103,6 +109,29 @@ class FeedCell: UICollectionViewCell {
         return label
     }()
     
+    let dividerLineView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.rgb(red: 226, green: 228, blue: 232)
+        return view
+    }()
+    
+    let likeButton = FeedCell.buttonForTitle(title: "Like", imageName: "like")
+    let commentButton = FeedCell.buttonForTitle(title: "Comment", imageName: "comment")
+    let shareButton = FeedCell.buttonForTitle(title: "Share", imageName: "share")
+    
+    static func buttonForTitle(title: String, imageName: String) -> UIButton {
+        let button = UIButton()
+        button.setTitle(title, for: .normal)
+        button.setTitleColor(UIColor.rgb(red: 143, green: 150, blue: 163), for: .normal)
+        
+        button.setImage(UIImage(named:imageName), for: .normal)
+        button.titleEdgeInsets = UIEdgeInsetsMake(0, 8, 0, 0)
+        
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        
+        return button
+    }
+    
     
     
     func setupViews() {
@@ -114,6 +143,12 @@ class FeedCell: UICollectionViewCell {
         addSubview(statusImageView)
         addSubview(likesCommentLabel)
         
+        addSubview(dividerLineView)
+        
+        addSubview(likeButton)
+        addSubview(commentButton)
+        addSubview(shareButton)
+        
         addConstraintsWithFormat(format: "H:|-8-[v0(44)]-8-[v1]|", views: profileImageView, nameLabel)
         
         addConstraintsWithFormat(format: "H:|-4-[v0]-4-|", views: statusTextView)
@@ -122,9 +157,17 @@ class FeedCell: UICollectionViewCell {
         
         addConstraintsWithFormat(format: "H:|-12-[v0]|", views: likesCommentLabel)
         
+        addConstraintsWithFormat(format: "H:|-12-[v0]-12-|", views: dividerLineView)
+        
+        //button constraints
+        addConstraintsWithFormat(format: "H:|[v0(v2)][v1(v2)][v2]|", views: likeButton, commentButton, shareButton)
+        
         addConstraintsWithFormat(format: "V:|-12-[v0]", views: nameLabel)
         
-        addConstraintsWithFormat(format: "V:|-8-[v0(44)]-4-[v1(30)]-4-[v2]-8-[v3(24)]-8-|", views: profileImageView, statusTextView, statusImageView, likesCommentLabel)
+        addConstraintsWithFormat(format: "V:|-8-[v0(44)]-4-[v1(30)]-4-[v2]-8-[v3(24)]-8-[v4(0.4)][v5(44)]|", views: profileImageView, statusTextView, statusImageView, likesCommentLabel, dividerLineView, likeButton)
+        
+        addConstraintsWithFormat(format: "V:[v0(44)]|", views: commentButton)
+        addConstraintsWithFormat(format: "V:[v0(44)]|", views: shareButton)
         
     }
     
