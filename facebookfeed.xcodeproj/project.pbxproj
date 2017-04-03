@@ -13,6 +13,8 @@
 		354263CE1E90F045007789AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 354263CC1E90F045007789AE /* LaunchScreen.storyboard */; };
 		354263D91E90F046007789AE /* facebookfeedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354263D81E90F046007789AE /* facebookfeedTests.swift */; };
 		354263E41E90F046007789AE /* facebookfeedUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354263E31E90F046007789AE /* facebookfeedUITests.swift */; };
+		35FE8BF61E92CB7800CA1D5D /* CutomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE8BF51E92CB7800CA1D5D /* CutomTabBarController.swift */; };
+		35FE8BF81E92D17200CA1D5D /* OtherControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE8BF71E92D17200CA1D5D /* OtherControllers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +47,8 @@
 		354263DF1E90F046007789AE /* facebookfeedUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = facebookfeedUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		354263E31E90F046007789AE /* facebookfeedUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = facebookfeedUITests.swift; sourceTree = "<group>"; };
 		354263E51E90F046007789AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		35FE8BF51E92CB7800CA1D5D /* CutomTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CutomTabBarController.swift; sourceTree = "<group>"; };
+		35FE8BF71E92D17200CA1D5D /* OtherControllers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherControllers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +104,8 @@
 				354263CA1E90F045007789AE /* Assets.xcassets */,
 				354263CC1E90F045007789AE /* LaunchScreen.storyboard */,
 				354263CF1E90F045007789AE /* Info.plist */,
+				35FE8BF51E92CB7800CA1D5D /* CutomTabBarController.swift */,
+				35FE8BF71E92D17200CA1D5D /* OtherControllers.swift */,
 			);
 			path = facebookfeed;
 			sourceTree = "<group>";
@@ -258,6 +264,8 @@
 			files = (
 				354263C61E90F045007789AE /* ViewController.swift in Sources */,
 				354263C41E90F045007789AE /* AppDelegate.swift in Sources */,
+				35FE8BF81E92D17200CA1D5D /* OtherControllers.swift in Sources */,
+				35FE8BF61E92CB7800CA1D5D /* CutomTabBarController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -498,6 +506,7 @@
 				354263EA1E90F046007789AE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		354263EB1E90F046007789AE /* Build configuration list for PBXNativeTarget "facebookfeedTests" */ = {
 			isa = XCConfigurationList;
@@ -506,6 +515,7 @@
 				354263ED1E90F046007789AE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		354263EE1E90F046007789AE /* Build configuration list for PBXNativeTarget "facebookfeedUITests" */ = {
 			isa = XCConfigurationList;
@@ -514,6 +524,7 @@
 				354263F01E90F046007789AE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
