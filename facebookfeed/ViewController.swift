@@ -10,13 +10,46 @@ import UIKit
 
 let cellId = "cellId"
 
-class Post {
+class Post: SafeJsonObject {
     var name: String?
     var statusText: String?
     var profileImageName: String?
     var statusImageName: String?
-    var numLikes: Int?
-    var numComments: Int?
+    var numLikes: NSNumber?
+    var numComments: NSNumber?
+    //var infoKey: String?
+    
+    var location: Location?
+    
+    override func setValue(_ value: Any?, forKey key: String) {
+        if key == "location" {
+            location = Location()
+            location?.setValuesForKeys(value as! [String: Any])
+        } else {
+            super.setValue(value, forKey: key)
+        }
+    }
+    
+    
+    
+
+}
+
+class SafeJsonObject: NSObject {
+    override func setValue(_ value: Any?, forKey key: String) {
+        let selectorString = "set\(key.uppercased().characters.first!)\(String(key.characters.dropFirst())):"
+        let selector = Selector(selectorString)
+        if responds(to: selector) {
+            super.setValue(value, forKey: key)
+            
+        }
+        
+    }
+}
+
+class Location: NSObject {
+    var city: String?
+    var state: String?
 }
 
 class FeedController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
@@ -26,34 +59,61 @@ class FeedController: UICollectionViewController, UICollectionViewDelegateFlowLa
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let postMark = Post()
-        postMark.name = "Mark Zuckerberg"
-        postMark.statusText = "Meanwhile, Beast turned to the dark side."
-        postMark.profileImageName = "zuckprofile"
-        postMark.statusImageName = "zuckdog"
-        postMark.numLikes = 400
-        postMark.numComments = 123
+        if let path = Bundle.main.path(forResource: "all_posts", ofType: "json") {
+            
+            do {
+                
+                let data = try(NSData(contentsOfFile: path, options: NSData.ReadingOptions.mappedIfSafe))
+                
+                let jsonDictionary = try(JSONSerialization.jsonObject(with: data as Data, options: .mutableContainers))
+                
+                
+                let jsonResult = jsonDictionary as? [String : Any]
+                let postsArray = jsonResult?["posts"] as! [[String: Any]]
+                
+                self.posts = [Post]()
+                
+                for postDictionary in postsArray {
+                    let post = Post()
+                    post.setValuesForKeys(postDictionary)
+                    self.posts.append(post)
+                }
+                
+                
+            } catch let err {
+                print(err)
+            }
+            
+        }
         
-        let postSteve  = Post()
-        postSteve.name = "Steve Jobs"
-        postSteve.statusText = "Design is not just what it looks like and feels like. Design is how it works.\n\n" + "Being the richest man in the cemetry doesn't matter to me. Going to bed at night saying we've done something wonderful, that's what matters to me.\n\n" + "Sometimes when you innovate, you make mistakes. It is best to admit them quickly, and get on with improving your other innovations."
-        postSteve.profileImageName = "steve_profile"
-        postSteve.statusImageName = "steve_status"
-        postSteve.numLikes = 1000
-        postSteve.numComments = 55
-        
-        
-        let postGandhi  = Post()
-        postGandhi.name = "Mahatma Gandhi"
-        postGandhi.statusText = "Live as if you were to die tomorrow; learn as if you were to live forever.\n" + "The weak can never forgive. Forgiveness is the attribute of the strong.\n" + "Happiness is when what you think, what you say and what you do, are in harmony."
-        postGandhi.profileImageName = "gandhi_profile"
-        postGandhi.statusImageName = "gandhi_status"
-        postGandhi.numLikes = 333
-        postGandhi.numComments = 22
-        
-        posts.append(postMark)
-        posts.append(postSteve)
-        posts.append(postGandhi)
+//        let postMark = Post()
+//        postMark.name = "Mark Zuckerberg"
+//        postMark.statusText = "Meanwhile, Beast turned to the dark side."
+//        postMark.profileImageName = "zuckprofile"
+//        postMark.statusImageName = "zuckdog"
+//        postMark.numLikes = 400
+//        postMark.numComments = 123
+//        
+//        let postSteve  = Post()
+//        postSteve.name = "Steve Jobs"
+//        postSteve.statusText = "Design is not just what it looks like and feels like. Design is how it works.\n\n" + "Being the richest man in the cemetry doesn't matter to me. Going to bed at night saying we've done something wonderful, that's what matters to me.\n\n" + "Sometimes when you innovate, you make mistakes. It is best to admit them quickly, and get on with improving your other innovations."
+//        postSteve.profileImageName = "steve_profile"
+//        postSteve.statusImageName = "steve_status"
+//        postSteve.numLikes = 1000
+//        postSteve.numComments = 55
+//        
+//        
+//        let postGandhi  = Post()
+//        postGandhi.name = "Mahatma Gandhi"
+//        postGandhi.statusText = "Live as if you were to die tomorrow; learn as if you were to live forever.\n" + "The weak can never forgive. Forgiveness is the attribute of the strong.\n" + "Happiness is when what you think, what you say and what you do, are in harmony."
+//        postGandhi.profileImageName = "gandhi_profile"
+//        postGandhi.statusImageName = "gandhi_status"
+//        postGandhi.numLikes = 333
+//        postGandhi.numComments = 22
+//        
+//        posts.append(postMark)
+//        posts.append(postSteve)
+//        posts.append(postGandhi)
         
         navigationItem.title = "Facebook Feed"
         
